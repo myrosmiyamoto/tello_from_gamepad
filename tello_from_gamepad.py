@@ -19,7 +19,7 @@ def main():
     # Telloの初期化
     # Wi-Fiアクセスポイントへ接続する設定（Wi-Fi子機になるモード）にしている場合は
     # hostを指定してIPアドレスは現物に合わせる
-    tello = Tello(host='192.168.13.4', retry_count=1)  # retry_countは応答が来ないときのリトライ回数
+    tello = Tello(host='192.168.13.3', retry_count=1)  # retry_countは応答が来ないときのリトライ回数
     Tello.RESPONSE_TIMEOUT = 0.1  # 応答が来ないときのタイムアウト時間
     Tello.TAKEOFF_TIMEOUT = 1  # 離陸時のタイムアウト時間
     tello.connect() # Telloへ接続
