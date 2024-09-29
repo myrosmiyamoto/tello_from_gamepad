@@ -94,7 +94,7 @@ $ pip3 install pygame
 この関数 `map_axis(数値)` は、スティックの入力値をドローンが認識できる範囲の値に変換するためのものです。具体的には、スティックの入力値が -1.0 から 1.0 の範囲であるのに対し、ドローンは -100 から 100 の範囲の値を必要とします。この変換を行うのが `map_axis()` 関数です。 `数値` にゲームパッドから取得した値を指定します。
 計算方法として、線形補間を用いている。線形補間とは、次のように2点 $(x0, y0)$ と $(x1, y1)$ を直線で結んだ時に、間にある任意の $x$ 座標に対応する $y$ を計算することです。
 
-[http___upload.wikimedia.org_wikipedia_commons_thumb_d_dd_LinearInterpolation.svg_300px-LinearInterpolation.svg.avif](http___upload.wikimedia.org_wikipedia_commons_thumb_d_dd_LinearInterpolation.svg_300px-LinearInterpolation.svg.avif)
+![img/Linear_interpolation.png](img/Linear_interpolation.png)
 
 線形補間の基本式は次の式になります。
 
