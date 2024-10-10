@@ -155,7 +155,7 @@ $$
 
 import sys
 import time
-from djitellopy import Tello
+from djitellopy import Tello, TelloException
 import pygame
 from pygame.locals import JOYAXISMOTION, JOYBUTTONDOWN
 from functools import cache
@@ -184,8 +184,16 @@ class TelloFromGamepad():
         Tello.RESPONSE_TIMEOUT = 0.01  # 応答が来ないときのタイムアウト時間
         self.tello = Tello(host=host)
 
+
     def start(self):
-        self.tello.connect()  # Telloへ接続
+        try:
+            self.tello.connect()  # Telloへ接続
+        except KeyboardInterrupt:
+            print('\n[Finish] Press Ctrl+C to exit')
+            sys.exit()
+        except TelloException:
+            print('[Finish] Connection timeout')
+            sys.exit()
         time.sleep(1)
 
         while True:
