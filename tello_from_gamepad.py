@@ -102,25 +102,28 @@ class TelloFromGamepad():
     # up_down                      up  100 ... -100 down
     # yaw (rotate)      counter clock -100 ...  100 clock
     def send_tello(self, cmd, left_right=0, forward_backward=0, up_down=0, yaw=0):
-        if cmd == 'land':
-            self.tello.land()
-        elif cmd == 'takeoff':
-            self.tello.takeoff()
-        elif cmd == 'flip_forward':
-            self.tello.flip_forward()
-        elif cmd == 'flip_back':
-            self.tello.flip_back()
-        elif cmd == 'flip_left':
-            self.tello.flip_left()
-        elif cmd == 'flip_right':
-            self.tello.flip_right()
-        elif cmd == 'rc':
-            self.tello.send_rc_control(left_right, forward_backward, up_down, yaw)
-        elif cmd == 'emergency':
-            print('\nEmergency Stop!!\n')
-            self.tello.emergency()
-            print(f'[Battery] {self.tello.get_battery()}%')
-            self.game_finish()
+        try:
+            if cmd == 'land':
+                self.tello.land()
+            elif cmd == 'takeoff':
+                self.tello.takeoff()
+            elif cmd == 'flip_forward':
+                self.tello.flip_forward()
+            elif cmd == 'flip_back':
+                self.tello.flip_back()
+            elif cmd == 'flip_left':
+                self.tello.flip_left()
+            elif cmd == 'flip_right':
+                self.tello.flip_right()
+            elif cmd == 'rc':
+                self.tello.send_rc_control(left_right, forward_backward, up_down, yaw)
+            elif cmd == 'emergency':
+                print('\nEmergency Stop!!\n')
+                self.tello.emergency()
+                print(f'[Battery] {self.tello.get_battery()}%')
+                self.game_finish()
+        except TelloException:
+            print('[ERROR] Error occurred when sending tello command ')
 
 
     def game_finish(self):
